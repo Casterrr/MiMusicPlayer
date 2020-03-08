@@ -37,7 +37,7 @@ export default function SimpleList(props) {
             <ListItem button>
               <div>
                 <ListItemIcon>
-                  <icon id="music"><MusicNoteIcon/></icon>
+                  <span id="music"><MusicNoteIcon/></span>
                 </ListItemIcon>
               </div>
               <div id="texts">

@@ -1,21 +1,36 @@
 @import url('https://fonts.googleapis.com/css?family=Acme|Fredoka+One|Lobster|Rubik&display=swap');
 
+
 div.cabecalho{
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 100%;
-    height: 60px;
+    height: 65px;
     background-color: rgb(75, 0, 0);
     border-bottom: 2px solid rgb(54, 0, 0);
-
+    padding: 13px 0;
     font-family: 'Rubik', sans-serif;
     font-size: 20pt;
     text-indent: 10px;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 div.cabecalho img{
-    margin: 5px 0px 5px 10px;
+    margin: 0px 3px 0px 10px;
+    background-color: rgba(255, 0, 0, 0.11);
+    border-radius: 20%;
+    padding: 3px;
+}
+div.cabecalho p{
+    border-bottom: 1.5px solid rgb(170, 0, 0);
+    padding-bottom: 3px;
+}
+div.cabecalho p span{
+    border-bottom: 1.5px solid red;
+    padding-bottom: 3px;
+}
+div.cabecalho span#space{
+    margin-left: 60px;
 }
 
 div.imagem {
@@ -27,5 +42,5 @@ div.imagem {
 }
 div.imagem img{
     border-radius: 10%;
-    box-shadow: 3px 3px 8px black;
+    box-shadow: 3px 3px 8px rgb(24, 0, 0);
 }

@@ -1,9 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
 div.player{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+div.music{
+    width: 100%;
+    margin-top: -10px;
+    font-family: 'Rubik', sans-serif;
+    font-size: 10pt;
+    color: white;
+}
+div.music-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 0 10px;
 
+    font-size: 12pt;
+}
+div.music-info p#by{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 8pt;
+    color: rgb(255, 255, 255,0.7);
+}
+
+div.slidecontainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+    padding: 3px;
+}
+.slider {
+    -webkit-appearance: none;
+    width: 70%;
+    height: 8px;
+    border-radius: 5px;  
+    margin: 0 5px;
+    background: #7c0000;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+  
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%; 
+    background: rgb(255, 39, 39);
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: rgb(255, 0, 0);
+    cursor: pointer;
+}
 
 div.buttons{
     display: flex;
@@ -14,11 +75,18 @@ button.audioButton{
     display: flex;
     background-color: transparent;
     justify-content: center;
+    margin: 10px 0;
     border: 0;
     color: rgb(194, 194, 194);
     cursor: pointer;
     transition: all 0.5s;
 }
+button.playPause{
+    /* background: rgb(95, 0, 0); */
+    border: 1.3px solid rgb(255, 0, 0,0.8);
+    border-radius: 50%;
+}
 button.audioButton:hover{
     color: rgb(255, 255, 255);
 }
+

@@ -34,7 +34,7 @@ export default class Main extends Component{
             
             {
                 nome: "Alone",
-                by: "- By | Alan Walker",
+                by: "< By | Alan Walker >",
                 src: Alone,
                 img: AloneImg,
                 id: 0,
@@ -45,7 +45,7 @@ export default class Main extends Component{
             },
             {
                 nome: "Darkside (feat. Au Ra and Tomine Harket)",
-                by: "- By | Alan Walker",
+                by: "< By | Alan Walker >",
                 src: Darkside,
                 img: DarksideImg,
                 id: 1,
@@ -56,7 +56,7 @@ export default class Main extends Component{
             },
             {
                 nome: "Courtesy Call - 1.25",
-                by: "- By | Thousand Foot Krutch",
+                by: "< By | Thousand Foot Krutch >",
                 src: Courtesy,
                 img: CourtesyImg,
                 id: 2,
@@ -67,7 +67,7 @@ export default class Main extends Component{
             },
             {
                 nome: "I'll Go [Monstercat EP Release]",
-                by: "- By | Direct & Park Avenue",
+                by: "< By | Direct & Park Avenue >",
                 src: iWillGo,
                 img: iWillGoImg,
                 id: 3,
@@ -78,7 +78,7 @@ export default class Main extends Component{
             },
             {
                 nome: "Blinded [Monstercat EP Release]",
-                by: "- By | Duumu",
+                by: "< By | Duumu >",
                 src: Duumu,
                 img: DuumuImg,
                 id: 4,
@@ -89,7 +89,7 @@ export default class Main extends Component{
             },
             {
                 nome: "Color (feat. Juneau)",
-                by: "- By | Grant",
+                by: "< By | Grant >",
                 src: Color,
                 img: ColorImg,
                 id: 5,
@@ -100,7 +100,7 @@ export default class Main extends Component{
             },
             {
                 nome: "Flamingo",
-                by: "- By | Kero Kero Bonito",
+                by: "< By | Kero Kero Bonito >",
                 src: Flamingo,
                 img: FlamingoImg,
                 id: 6,
@@ -111,7 +111,7 @@ export default class Main extends Component{
             },
             {
                 nome: "Last Game - English Cover - Steins;Gate 0 ED",
-                by: "- Cover by | Poopturds",
+                by: "< Cover by | Poopturds >",
                 src: LastGame,
                 img: LastGameImg,
                 id: 7,
@@ -215,7 +215,22 @@ export default class Main extends Component{
 
         
     }
-    
+    changeMusicTime = ()=>{
+        const rangeInput = document.getElementById('myRange');
+        const audio = document.getElementById('musica');
+        if (rangeInput !== null){
+            console.log(rangeInput.value)
+            audio.currentTime = rangeInput.value
+        }
+    }
+
+    changeRangeValue = ()=>{
+        const rangeInput = document.getElementById('myRange');
+        const audio = document.getElementById('musica');
+        if (rangeInput !== null){
+            rangeInput.value = audio.currentTime
+        }
+    }
     render(){
         return(
             <div className="corpo">
@@ -242,6 +257,8 @@ export default class Main extends Component{
                      nextAudio={this.nextAudio}
                      paused={this.state.paused}
                      handlePlayPause={this.handlePlayPause}
+                     changeMusicTime={this.changeMusicTime}
+                     changeRangeValue={this.changeRangeValue}
                      />
                 </footer>
             </div>
