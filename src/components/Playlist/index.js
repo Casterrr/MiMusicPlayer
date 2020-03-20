@@ -30,7 +30,10 @@ export default function SimpleList(props) {
         {props.musicas.map(musica =>(
           <button key={musica.id} className="list-item" id={musica.id} onClick={() => {
             props.handleMusic(musica.id)
-            if (props.paused === false && props.selectedMusic !== musica.id){
+            if (props.paused === false && props.selectedMusic !== musica.id && props.shuffle === false){
+              props.handlePlayPause()
+            }
+            if (props.paused === true && props.selectedMusic !== musica.id && props.shuffle === true){
               props.handlePlayPause()
             }
             }}>

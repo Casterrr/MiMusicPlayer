@@ -122,9 +122,9 @@ export default class Main extends Component{
             }
         ],
         selectedMusic: 0,
-        paused: true
+        paused: true,
+        shuffle: false
     }
-
 
     handleMusic = (id) =>{
 
@@ -146,10 +146,69 @@ export default class Main extends Component{
     handlePlayPause = () =>{
         this.state.paused ? this.setState({paused: false}) : this.setState({paused: true})
     }
+
+    handleShuffle = () =>{
+
+        //pega o shuffle
+        const shuffle = document.getElementById('shuffle');
+        const shuffleClassList = shuffle.classList;
+        //esse If/else vai tirar/colocar a classe shuffleOn
+        if (shuffleClassList.length === 2){
+            shuffle.classList.remove("shuffleOn");
+
+            this.setState({
+                shuffle: false
+            })
+        }
+        else{
+            shuffle.classList.add("shuffleOn");
+
+            this.setState({
+                shuffle: true
+            })
+        }
+
+        const audioEl = document.getElementById('musica');
+        audioEl.autoplay ? audioEl.autoplay=false : audioEl.autoplay=true;
+    }
+
+    randomAudio = () =>{
+        /*Essa função faz com que cada vez que ela for chamada, ela ponha uma música aleatória no 
+        selectedMusic, e, remove da shuffleList essa música aleatória.*/
+
+        //TIRA O SELECT DE TODOS OS BOTÕES
+        const buttonElements = document.getElementsByClassName('list-item');
+        for (var i = 0; i < buttonElements.length; i++) {
+            buttonElements[i].classList.remove("selected")
+        }
+
+        var newSelectedMusic = Math.floor(Math.random() * this.state.musicas.length);
+        
+        while (newSelectedMusic === this.state.selectedMusic){
+            newSelectedMusic = Math.floor(Math.random() * this.state.musicas.length);
+        }
+
+        this.setState({
+            selectedMusic: newSelectedMusic,
+        })
+
+        const buttonEl = document.getElementById(newSelectedMusic);
+        buttonEl.classList.add('selected');
+    }
+
     prevAudio = () => {
+        /* if (this.state.shuffle === true){
+            this.setState({
+                paused: false
+            })
+        } */
         //MUDA O PAUSED
-        if (this.state.paused === false){
+        if (this.state.paused === false && this.state.shuffle === false){
             this.setState({paused: true})
+        }
+
+        if (this.state.paused === true && this.state.shuffle === true){
+            this.setState({paused: false})
         }
 
         //TIRA O SELECT DE TODOS OS BOTÕES
@@ -182,10 +241,13 @@ export default class Main extends Component{
     }
     nextAudio = () => {
         //MUDA O PAUSED
-        if (this.state.paused === false){
+        if (this.state.paused === false && this.state.shuffle === false){
             this.setState({paused: true})
         }
 
+        if (this.state.paused === true && this.state.shuffle === true){
+            this.setState({paused: false})
+        }
         //TIRA O SELECT DE TODOS OS BOTÕES
         const buttonElements = document.getElementsByClassName('list-item');
         for (var i = 0; i < buttonElements.length; i++) {
@@ -212,7 +274,6 @@ export default class Main extends Component{
             const buttonEl = document.getElementById(selectedMusic+1);
             buttonEl.classList.add('selected');
         }
-
         
     }
     changeMusicTime = ()=>{
@@ -243,6 +304,7 @@ export default class Main extends Component{
                     <Playlist 
                     musicas={this.state.musicas} 
                     selectedMusic={this.state.selectedMusic} 
+                    shuffle={this.state.shuffle} 
                     handleMusic={this.handleMusic} 
                     handlePlayPause={this.handlePlayPause} 
                     paused={this.state.paused} 
@@ -252,13 +314,18 @@ export default class Main extends Component{
                      <Player 
                      musicas={this.state.musicas} 
                      selectedMusic={this.state.selectedMusic} 
+                     shuffle={this.state.shuffle} 
+                     shuffleList={this.state.shuffleList}
                      handleMusic={this.handleMusic} 
-                     prevAudio={this.prevAudio}
-                     nextAudio={this.nextAudio}
-                     paused={this.state.paused}
-                     handlePlayPause={this.handlePlayPause}
-                     changeMusicTime={this.changeMusicTime}
-                     changeRangeValue={this.changeRangeValue}
+                     prevAudio={this.prevAudio} 
+                     nextAudio={this.nextAudio} 
+                     paused={this.state.paused} 
+                     handlePlayPause={this.handlePlayPause} 
+                     changeMusicTime={this.changeMusicTime} 
+                     changeRangeValue={this.changeRangeValue} 
+                     handleShuffle={this.handleShuffle} 
+                     randomAudio={this.randomAudio} 
+                     resetShuffle={this.resetShuffle} 
                      />
                 </footer>
             </div>

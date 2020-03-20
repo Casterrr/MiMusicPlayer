@@ -6,6 +6,8 @@ import SkipNextIcon from '@material-ui/icons/SkipNext';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
+import ShuffleIcon from '@material-ui/icons/Shuffle';
+import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 
 export default function Player(props){
     /* const [paused, setPaused] = useState(true); */
@@ -59,17 +61,28 @@ export default function Player(props){
         <div className="player">
             
             <div className="buttons">
-                <button className="audioButton" onClick={() => props.prevAudio()}><IconButton color="inherit"><SkipPreviousIcon /></IconButton></button>
+                <span className="audioButton" onClick={()=>{}}><IconButton color="inherit"><VolumeUpIcon/></IconButton></span>
+
+                <span className="audioButton" onClick={() => props.prevAudio()}><IconButton color="inherit"><SkipPreviousIcon /></IconButton></span>
                 
-                <button className="audioButton playPause" id="playPause" onClick={props.paused ? () => playAudio() : () => pauseAudio() }>
+                <span className="audioButton playPause" id="playPause" onClick={props.paused ? () => playAudio() : () => pauseAudio() }>
                     {props.paused ? <IconButton color="inherit"><PlayArrowIcon/></IconButton> : <IconButton color="inherit"><PauseIcon /></IconButton>}
-                </button>
+                </span>
                 
-                <button className="audioButton" onClick={() => props.nextAudio()}><IconButton color="inherit"><SkipNextIcon /></IconButton></button>
+                <span className="audioButton" onClick={() => props.nextAudio()}><IconButton color="inherit"><SkipNextIcon /></IconButton></span>
+
+                <span className="audioButton" id="shuffle" onClick={() => props.handleShuffle()}><IconButton color="inherit" size="small" disableRipple={true}><ShuffleIcon/></IconButton></span>
             </div>
 
             <div className= "music">
-                <audio id="musica" onTimeUpdate={()=> {props.changeRangeValue(); currentTime()}} onEnded={()=> props.nextAudio()}>
+                <audio id="musica" autoPlay={false} onTimeUpdate={()=> {props.changeRangeValue(); currentTime()}} onEnded={()=> {
+                    if (props.shuffle === false){
+                        props.nextAudio();
+                    }
+                    else{
+                        props.randomAudio();
+                    }
+                    }}>
                     <source src={props.musicas[props.selectedMusic].src} type="audio/mpeg"/>
                 </audio>
                 

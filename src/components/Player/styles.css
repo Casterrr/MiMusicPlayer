@@ -69,24 +69,36 @@ div.slidecontainer{
 div.buttons{
     display: flex;
     flex-direction: row;
+    margin: 13px 0;
 }
 
-button.audioButton{
+span.audioButton{
     display: flex;
     background-color: transparent;
     justify-content: center;
-    margin: 10px 0;
+    
     border: 0;
     color: rgb(194, 194, 194);
     cursor: pointer;
-    transition: all 0.5s;
+    transition: color 0.5s;
+
 }
-button.playPause{
+span.playPause{
     /* background: rgb(95, 0, 0); */
     border: 1.3px solid rgb(255, 0, 0,0.8);
     border-radius: 50%;
 }
-button.audioButton:hover{
+span.audioButton.shuffleOn{
+    margin-top: 10px;
+    height: 10%;
+    background-color: rgb(99, 0, 0);
+    color: red;
+    border-radius: 50%;
+}
+span.audioButton:hover{
     color: rgb(255, 255, 255);
+}
+span.audioButton.shuffleOn:hover{
+    color: rgb(255, 0, 0);
 }
 
