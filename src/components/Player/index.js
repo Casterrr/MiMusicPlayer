@@ -8,7 +8,6 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
 import ShuffleIcon from '@material-ui/icons/Shuffle';
 import VolumeUpIcon from '@material-ui/icons/VolumeUp';
-
 export default function Player(props){
     /* const [paused, setPaused] = useState(true); */
     const [currentTimeInSc, setCurrentTimeInSc] = useState(0);
@@ -59,9 +58,8 @@ export default function Player(props){
     }
     return(
         <div className="player">
-            
             <div className="buttons">
-                <span className="audioButton" onClick={()=>{}}><IconButton color="inherit"><VolumeUpIcon/></IconButton></span>
+                {/* <span className="audioButton" onClick={()=>{}}><IconButton color="inherit"><VolumeUpIcon/></IconButton></span> */}
 
                 <span className="audioButton" onClick={() => props.prevAudio()}><IconButton color="inherit"><SkipPreviousIcon /></IconButton></span>
                 

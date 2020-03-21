@@ -69,7 +69,7 @@ div.slidecontainer{
 div.buttons{
     display: flex;
     flex-direction: row;
-    margin: 13px 0;
+    margin: 13px 0 13px 30px;
 }
 
 span.audioButton{
